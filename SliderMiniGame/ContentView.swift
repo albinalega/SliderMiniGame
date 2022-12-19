@@ -8,25 +8,49 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var sliderValue = 50.0
+    
+    @State private var currentValue = 50.0
+    @State private var targetValue = Int.random(in: 1...100)
+    @State private var alertPresented = false
+    @State private var score = 0
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Продвиньте слайдер как можно ближе к:")
-                Text("50")
+            
+            Text("Продвиньте слайдер как можно ближе к: \(targetValue)")
+                .padding(.bottom, 20)
+            
+            SliderView(value: $currentValue)
+            
+            
+            Button("Проверь меня!") {
+                score = computeScore()
+                alertPresented = true
             }
-            .padding(.bottom, 20)
-            
-            SliderView(value: $sliderValue)
-            
-            ButtonView(title: "Проверь меня!", action: {})
-                .padding()
+            .alert(isPresented: $alertPresented) {
+                Alert(
+                    title: Text("Ваш счет"),
+                    message: Text(score.formatted()),
+                    dismissButton: .default(Text("OK")) {
+                        targetValue = Int.random(in: 1...100)
+                    }
+                )
+            }
+            .padding(10)
             
             ButtonView(title: "Начать заново", action: {})
             
         }
         .padding()
+    }
+    
+    private func checkingButtonPressed() {
+        alertPresented.toggle()
+    }
+    
+    private func computeScore() -> Int {
+        let difference = abs(targetValue - lround(currentValue))
+        return 100 - difference
     }
 }
 
