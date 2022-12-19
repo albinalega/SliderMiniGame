@@ -38,14 +38,15 @@ struct ContentView: View {
             }
             .padding(10)
             
-            ButtonView(title: "Начать заново", action: {})
+            ButtonView(title: "Начать заново", action: startAgain)
             
         }
         .padding()
     }
     
-    private func checkingButtonPressed() {
-        alertPresented.toggle()
+    private func startAgain() {
+        targetValue = Int.random(in: 1...100)
+        currentValue = 50
     }
     
     private func computeScore() -> Int {
