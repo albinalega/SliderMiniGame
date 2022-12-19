@@ -20,8 +20,11 @@ struct ContentView: View {
             Text("Продвиньте слайдер как можно ближе к: \(targetValue)")
                 .padding(.bottom, 20)
             
-            SliderView(value: $currentValue)
-            
+            HStack {
+                Text("0")
+                UIKitSlider(currentValue: $currentValue)
+                Text("100")
+            }
             
             Button("Проверь меня!") {
                 score = computeScore()
@@ -33,6 +36,7 @@ struct ContentView: View {
                     message: Text(score.formatted()),
                     dismissButton: .default(Text("OK")) {
                         targetValue = Int.random(in: 1...100)
+                        currentValue = 50
                     }
                 )
             }
@@ -52,18 +56,6 @@ struct ContentView: View {
     private func computeScore() -> Int {
         let difference = abs(targetValue - lround(currentValue))
         return 100 - difference
-    }
-}
-
-struct SliderView: View {
-    @Binding var value: Double
-    
-    var body: some View {
-        HStack {
-            Text("0")
-            Slider(value: $value, in: 0...100)
-            Text("100")
-        }
     }
 }
 

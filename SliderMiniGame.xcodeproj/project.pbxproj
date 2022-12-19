@@ -11,6 +11,7 @@
 		558BE7C72950A02800B27D26 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558BE7C62950A02800B27D26 /* ContentView.swift */; };
 		558BE7C92950A02900B27D26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558BE7C82950A02900B27D26 /* Assets.xcassets */; };
 		558BE7CC2950A02900B27D26 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 558BE7CB2950A02900B27D26 /* Preview Assets.xcassets */; };
+		558BE7D32950D7EB00B27D26 /* UIKitSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 558BE7D22950D7EB00B27D26 /* UIKitSlider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		558BE7C62950A02800B27D26 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		558BE7C82950A02900B27D26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		558BE7CB2950A02900B27D26 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		558BE7D22950D7EB00B27D26 /* UIKitSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitSlider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			children = (
 				558BE7C42950A02800B27D26 /* SliderMiniGameApp.swift */,
 				558BE7C62950A02800B27D26 /* ContentView.swift */,
+				558BE7D22950D7EB00B27D26 /* UIKitSlider.swift */,
 				558BE7C82950A02900B27D26 /* Assets.xcassets */,
 				558BE7CA2950A02900B27D26 /* Preview Content */,
 			);
@@ -138,6 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				558BE7C72950A02800B27D26 /* ContentView.swift in Sources */,
+				558BE7D32950D7EB00B27D26 /* UIKitSlider.swift in Sources */,
 				558BE7C52950A02800B27D26 /* SliderMiniGameApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
