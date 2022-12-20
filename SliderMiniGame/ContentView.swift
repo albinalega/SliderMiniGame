@@ -34,21 +34,20 @@ struct ContentView: View {
                     title: Text("Ваш счет:"),
                     message: Text(score.formatted()),
                     dismissButton: .default(Text("OK")) {
-                        targetValue = Int.random(in: 1...100)
-                        currentValue = 50
+                        resetValue()
                     }
                 )
             }
             .padding(10)
             
-            Button(action: startAgain) {
+            Button(action: resetValue) {
                 Text("Начать заново")
             }
         }
         .padding()
     }
     
-    private func startAgain() {
+    private func resetValue() {
         targetValue = Int.random(in: 1...100)
         currentValue = 50
     }
