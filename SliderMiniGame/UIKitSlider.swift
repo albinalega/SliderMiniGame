@@ -17,6 +17,7 @@ struct UIKitSlider: UIViewRepresentable {
         slider.minimumValue = 0
         slider.maximumValue = 100
         slider.value = 50
+        slider.thumbTintColor = .red
         slider.addTarget(
             context.coordinator,
             action: #selector(Coordinator.changeValue),
@@ -37,6 +38,7 @@ struct UIKitSlider: UIViewRepresentable {
 
 extension UIKitSlider {
     class Coordinator: NSObject {
+        
         @Binding var currentValue: Double
         
         init(currentValue: Binding<Double>) {

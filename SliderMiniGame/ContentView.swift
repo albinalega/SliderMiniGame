@@ -16,7 +16,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            
             Text("Продвиньте слайдер как можно ближе к: \(targetValue)")
                 .padding(.bottom, 20)
             
@@ -32,7 +31,7 @@ struct ContentView: View {
             }
             .alert(isPresented: $alertPresented) {
                 Alert(
-                    title: Text("Ваш счет"),
+                    title: Text("Ваш счет:"),
                     message: Text(score.formatted()),
                     dismissButton: .default(Text("OK")) {
                         targetValue = Int.random(in: 1...100)
@@ -42,8 +41,9 @@ struct ContentView: View {
             }
             .padding(10)
             
-            ButtonView(title: "Начать заново", action: startAgain)
-            
+            Button(action: startAgain) {
+                Text("Начать заново")
+            }
         }
         .padding()
     }
@@ -56,18 +56,6 @@ struct ContentView: View {
     private func computeScore() -> Int {
         let difference = abs(targetValue - lround(currentValue))
         return 100 - difference
-    }
-}
-
-struct ButtonView: View {
-    
-    let title: String
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            Text(title)
-        }
     }
 }
 
