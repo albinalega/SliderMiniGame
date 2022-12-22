@@ -9,50 +9,53 @@ import SwiftUI
 
 struct UIKitSlider: UIViewRepresentable {
     
-    @Binding var currentValue: Double
+    @Binding var value: Double
+    let alpha: Int
     
     func makeUIView(context: Context) -> UISlider {
         let slider = UISlider()
         
         slider.minimumValue = 0
         slider.maximumValue = 100
-        slider.value = 50
         slider.thumbTintColor = .red
+        
         slider.addTarget(
             context.coordinator,
             action: #selector(Coordinator.changeValue),
-            for: .allEvents
+            for: .valueChanged
         )
         
         return slider
     }
     
     func updateUIView(_ uiView: UISlider, context: Context) {
-        uiView.value = Float(currentValue)
+        uiView.value = Float(value)
+        uiView.thumbTintColor = .red.withAlphaComponent(CGFloat(alpha) / 100)
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(currentValue: $currentValue)
+        Coordinator(value: $value)
+        
     }
 }
 
 extension UIKitSlider {
     class Coordinator: NSObject {
         
-        @Binding var currentValue: Double
+        @Binding var value: Double
         
-        init(currentValue: Binding<Double>) {
-            self._currentValue = currentValue
+        init(value: Binding<Double>) {
+            self._value = value
         }
         
         @objc func changeValue(_ sender: UISlider) {
-            currentValue = Double(sender.value)
+            value = Double(sender.value)
         }
     }
 }
 
 struct Slider_Previews: PreviewProvider {
     static var previews: some View {
-        UIKitSlider(currentValue: .constant(50))
+        UIKitSlider(value: .constant(50), alpha: 1)
     }
 }

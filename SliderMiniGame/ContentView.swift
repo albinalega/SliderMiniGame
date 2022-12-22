@@ -12,7 +12,6 @@ struct ContentView: View {
     @State private var currentValue = 50.0
     @State private var targetValue = Int.random(in: 1...100)
     @State private var alertPresented = false
-    @State private var score = 0
     
     var body: some View {
         VStack {
@@ -21,35 +20,24 @@ struct ContentView: View {
             
             HStack {
                 Text("0")
-                UIKitSlider(currentValue: $currentValue)
+                UIKitSlider(value: $currentValue, alpha: computeScore())
                 Text("100")
             }
             
             Button("Проверь меня!") {
-                score = computeScore()
-                alertPresented = true
+                alertPresented.toggle()
             }
-            .alert(isPresented: $alertPresented) {
-                Alert(
-                    title: Text("Ваш счет:"),
-                    message: Text(score.formatted()),
-                    dismissButton: .default(Text("OK")) {
-                        resetValue()
-                    }
-                )
+            .alert("Your Score", isPresented: $alertPresented, actions: {}) {
+                Text(computeScore().formatted())
             }
             .padding(10)
             
-            Button(action: resetValue) {
-                Text("Начать заново")
+            Button("Начать заново") {
+                targetValue = Int.random(in: 1...100)
+                currentValue = 50
             }
         }
         .padding()
-    }
-    
-    private func resetValue() {
-        targetValue = Int.random(in: 1...100)
-        currentValue = 50
     }
     
     private func computeScore() -> Int {
